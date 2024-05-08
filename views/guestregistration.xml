@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="view_hotel_guestregistration_list">
+    <field name="name">Guest Registration</field>
+    <field name="model">hotel.guestregistration</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="datecreated"/>
+        <field name="room_id"/>
+        <field name="roomtname"/>
+        <field name="guest_id"/>      
+        <field name="state"/>   
+        <field name="datefromSched"/>   
+        <field name="datetoSched"/>                
+      </tree>
+    </field>
+  </record>
+
+    <!-- explicit form view definition -->
+
+  <record model="ir.ui.view" id="view_hotel_guestregistraton_form">
+    <field name="name">Guest Registration</field>
+    <field name="model">hotel.guestregistration</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+              <button 
+                name="action_reserve" 
+                string="Reserve" 
+                type="object" 
+                invisible="state != 'DRAFT'"
+                confirm="Tag registration as RESERVED?"
+                class="oe_highlight"/>
+
+              <button 
+                name="action_checkin" 
+                string="Check IN" 
+                type="object" 
+                confirm="Tag registration as CHECKED IN?"
+                invisible="state == 'CHECKEDIN' or state == 'CHECKEDOUT' or state=='CANCELLED'"
+                class="oe_highlight"/>
+
+              <button 
+                name="action_checkout" 
+                string="Check OUT" 
+                type="object" 
+                confirm="Tag registration as CHECKED OUT?"
+                invisible="state != 'CHECKEDIN'"
+                class="oe_highlight"/>
+
+              <button 
+                name="action_cancel" 
+                string="Cancel" 
+                type="object" 
+                confirm="Tag registration as CANCELLED?"
+                invisible="state != 'DRAFT' and state!= 'RESERVED'"
+                class="oe_highlight"/>
+
+              <!--options="{'clickable':'1'}"-->
+              <field name="state" widget="statusbar" nolabel="1" />
+        </header>
+        <sheet>
+           <group>
+              <group>
+                <field name="datecreated"/>    
+              </group>
+           
+            </group>  
+            <group>
+              <group>
+                <field name="room_id"/>    
+              </group>
+              <group>  
+                <field name="guest_id"/>      
+              </group> 
+            </group>   
+            <group>  
+              <group>
+                <field name="datefromSched"/> 
+              </group>
+              <group>  
+                <field name="datetoSched"/>
+              </group>  
+            </group>                  
+
+        </sheet>    
+      </form>
+    </field>
+  </record>
+
+
+  <!-- actions opening views on models -->
+  <record model="ir.actions.act_window" id="action_hotel_guestregistration">
+    <field name="name">Guest Registration</field>
+    <field name="res_model">hotel.guestregistration</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+ <!-- menu item for charges cruds -->
+  <menuitem 
+    name="Guest Registration" id="menu_hotel_guestregistration" 
+    sequence="10"
+    parent="menu_hotel_root"
+    action="action_hotel_guestregistration"/>
+
+ </odoo>

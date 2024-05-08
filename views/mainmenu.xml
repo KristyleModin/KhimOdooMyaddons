@@ -1,0 +1,7 @@
+<odoo>
+    <data>
+        <menuitem name="Hotel" id="menu_hotel_root" web_icon="hotel,static/description/icon.png"/>
+        <menuitem name="Guest Registration" id="menu_hotel_guestregistration" parent="menu_hotel_root"/>
+        <menuitem name="Master Lists" id="menu_hotel_masterlists" parent="menu_hotel_root"/>
+    </data>
+</odoo>

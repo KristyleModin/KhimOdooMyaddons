@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="myaddons/hotel.list">
+      <field name="name">myaddons/hotel list</field>
+      <field name="model">myaddons/hotel.myaddons/hotel</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="myaddons/hotel.action_window">
+      <field name="name">myaddons/hotel window</field>
+      <field name="res_model">myaddons/hotel.myaddons/hotel</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="myaddons/hotel.action_server">
+      <field name="name">myaddons/hotel server</field>
+      <field name="model_id" ref="model_myaddons/hotel_myaddons/hotel"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="myaddons/hotel" id="myaddons/hotel.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="myaddons/hotel.menu_1" parent="myaddons/hotel.menu_root"/>
+    <menuitem name="Menu 2" id="myaddons/hotel.menu_2" parent="myaddons/hotel.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="myaddons/hotel.menu_1_list" parent="myaddons/hotel.menu_1"
+              action="myaddons/hotel.action_window"/>
+    <menuitem name="Server to list" id="myaddons/hotel" parent="myaddons/hotel.menu_2"
+              action="myaddons/hotel.action_server"/>
+-->
+  </data>
+</odoo>
